@@ -1,0 +1,1501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Innovation Without Limit</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #050810;
+    --bg2: #0a0f1e;
+    --bg3: #0f172a;
+    --accent: #4c08b4;
+    --accent2: #590fc7;
+    --accent3: #ff6b35;
+    --text: #ffffff;
+    --muted: #8892aa;
+    --border: rgba(0,245,196,0.15);
+    --card: rgba(255,255,255,0.03);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Syne', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    overflow-x: hidden;
+  }
+
+  /* GRID OVERLAY */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(0,245,196,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,245,196,0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.25rem 3rem;
+    background: rgba(5,8,16,0.85);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-logo {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.85rem;
+    color: var(--accent);
+    letter-spacing: 0.08em;
+    text-decoration: none;
+  }
+
+  .nav-logo span { color: var(--muted); }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--accent); }
+
+  .nav-cta {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.75rem;
+    padding: 0.6rem 1.4rem;
+    background: var(--accent);
+    color: #050810;
+    border: none;
+    cursor: pointer;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-decoration: none;
+    transition: opacity 0.2s, transform 0.2s;
+  }
+
+  .nav-cta:hover { opacity: 0.85; transform: translateY(-1px); }
+
+  /* HERO */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 8rem 2rem 4rem;
+    overflow: hidden;
+    z-index: 1;
+  }
+
+  .hero-glow {
+    position: absolute;
+    width: 800px; height: 800px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(0,245,196,0.07) 0%, transparent 70%);
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+  }
+
+  .hero-glow2 {
+    position: absolute;
+    width: 500px; height: 500px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(123,97,255,0.08) 0%, transparent 70%);
+    top: 30%; left: 20%;
+    pointer-events: none;
+  }
+
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    padding: 0.4rem 1rem;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    margin-bottom: 2rem;
+    animation: fadeIn 0.6s ease forwards;
+  }
+
+  .badge-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    animation: pulse 1.5s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero h1 {
+    font-size: clamp(3rem, 8vw, 7rem);
+    font-weight: 800;
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+    margin-bottom: 1rem;
+    animation: fadeUp 0.7s 0.15s ease both;
+  }
+
+  .hero h1 .line2 {
+    display: block;
+    color: var(--accent);
+    font-style: italic;
+  }
+
+  .hero h1 .line3 {
+    display: block;
+    color: var(--muted);
+    font-size: 0.55em;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    margin-top: 0.3em;
+  }
+
+  .hero-sub {
+    font-size: 1.1rem;
+    color: var(--muted);
+    max-width: 520px;
+    line-height: 1.65;
+    margin-bottom: 2.5rem;
+    animation: fadeUp 0.7s 0.3s ease both;
+  }
+
+  .hero-meta {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.8rem;
+    color: var(--muted);
+    margin-bottom: 2.5rem;
+    animation: fadeUp 0.7s 0.4s ease both;
+  }
+
+  .hero-meta strong { color: var(--text); }
+
+  .hero-meta-sep { color: var(--border); }
+
+  .hero-btns {
+    display: flex;
+    gap: 1rem;
+    animation: fadeUp 0.7s 0.5s ease both;
+  }
+
+  .btn-primary {
+    padding: 0.9rem 2.2rem;
+    background: var(--accent);
+    color: #050810;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    transition: opacity 0.2s, transform 0.2s;
+  }
+
+  .btn-primary:hover { opacity: 0.88; transform: translateY(-2px); }
+
+  .btn-secondary {
+    padding: 0.9rem 2.2rem;
+    background: transparent;
+    color: var(--text);
+    font-family: 'Space Mono', monospace;
+    font-size: 0.8rem;
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    border: 1px solid rgba(240,244,255,0.2);
+    cursor: pointer;
+    text-decoration: none;
+    transition: border-color 0.2s, color 0.2s;
+  }
+
+  .btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
+
+  .hero-scroll {
+    position: absolute;
+    bottom: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+    animation: fadeIn 1s 1s ease both;
+  }
+
+  .scroll-line {
+    width: 1px; height: 40px;
+    background: linear-gradient(to bottom, var(--accent), transparent);
+    animation: scrollAnim 1.5s infinite;
+  }
+
+  @keyframes scrollAnim {
+    0% { transform: scaleY(1) translateY(0); opacity: 1; }
+    100% { transform: scaleY(0.3) translateY(10px); opacity: 0; }
+  }
+
+  /* STATS BAR */
+  .stats-bar {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    background: var(--bg2);
+  }
+
+  .stat-item {
+    padding: 2rem;
+    border-right: 1px solid var(--border);
+    text-align: center;
+  }
+
+  .stat-item:last-child { border-right: none; }
+
+  .stat-num {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: 0.4rem;
+  }
+
+  .stat-label {
+    font-size: 0.75rem;
+    color: var(--muted);
+    font-family: 'Space Mono', monospace;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  /* SECTIONS */
+  section {
+    position: relative;
+    z-index: 1;
+  }
+
+  .section-header {
+    margin-bottom: 3.5rem;
+  }
+
+  .section-tag {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.8rem;
+  }
+
+  .section-title {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+  }
+
+  /* ABOUT */
+  .about {
+    padding: 6rem 3rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .about-text p {
+    font-size: 1.05rem;
+    color: var(--muted);
+    line-height: 1.8;
+    margin-bottom: 1.2rem;
+  }
+
+  .about-text p strong { color: var(--text); }
+
+  .about-visual {
+    position: relative;
+  }
+
+  .about-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    padding: 2rem;
+    margin-bottom: 1rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .about-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px; height: 100%;
+    background: var(--accent);
+  }
+
+  .about-card h4 {
+    font-size: 0.85rem;
+    font-family: 'Space Mono', monospace;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+    margin-bottom: 0.5rem;
+  }
+
+  .about-card p {
+    font-size: 0.9rem;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  /* TRACKS */
+  .tracks {
+    padding: 6rem 3rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .tracks-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .track-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    padding: 2rem;
+    transition: border-color 0.3s, transform 0.3s;
+    cursor: default;
+  }
+
+  .track-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-4px);
+  }
+
+  .track-icon {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    display: block;
+  }
+
+  .track-card h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 0.6rem;
+  }
+
+  .track-card p {
+    font-size: 0.85rem;
+    color: var(--muted);
+    line-height: 1.65;
+  }
+
+  .track-tag {
+    display: inline-block;
+    margin-top: 1rem;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    padding: 0.3rem 0.7rem;
+    border: 1px solid var(--border);
+    color: var(--muted);
+  }
+
+  /* SPEAKERS */
+  .speakers {
+    padding: 6rem 3rem;
+    background: var(--bg2);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .speakers-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .speakers-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+  }
+
+  .speaker-card {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    padding: 1.5rem;
+    text-align: center;
+    transition: border-color 0.3s;
+  }
+
+  .speaker-card:hover { border-color: var(--accent2); }
+
+  .speaker-avatar {
+    width: 80px; height: 80px;
+    border-radius: 50%;
+    margin: 0 auto 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    font-weight: 800;
+    border: 2px solid var(--border);
+  }
+
+  .speaker-card h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 0.3rem;
+  }
+
+  .speaker-card .role {
+    font-size: 0.75rem;
+    color: var(--accent);
+    font-family: 'Space Mono', monospace;
+    margin-bottom: 0.3rem;
+  }
+
+  .speaker-card .org {
+    font-size: 0.75rem;
+    color: var(--muted);
+    margin-bottom: 0.8rem;
+  }
+
+  .speaker-topic {
+    font-size: 0.75rem;
+    color: var(--muted);
+    line-height: 1.5;
+    font-style: italic;
+  }
+
+  /* SCHEDULE */
+  .schedule {
+    padding: 6rem 3rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .schedule-tabs {
+    display: flex;
+    gap: 0;
+    margin-bottom: 2.5rem;
+    border: 1px solid var(--border);
+    width: fit-content;
+  }
+
+  .tab-btn {
+    padding: 0.7rem 1.5rem;
+    background: transparent;
+    color: var(--muted);
+    border: none;
+    border-right: 1px solid var(--border);
+    font-family: 'Space Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+  }
+
+  .tab-btn:last-child { border-right: none; }
+  .tab-btn.active { background: var(--accent); color: #050810; font-weight: 700; }
+  .tab-btn:not(.active):hover { background: var(--card); color: var(--text); }
+
+  .schedule-list { display: none; }
+  .schedule-list.active { display: block; }
+
+  .schedule-item {
+    display: grid;
+    grid-template-columns: 130px 1fr auto;
+    align-items: center;
+    gap: 2rem;
+    padding: 1.5rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .schedule-item:last-child { border-bottom: none; }
+
+  .sch-time {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.78rem;
+    color: var(--accent);
+    letter-spacing: 0.05em;
+  }
+
+  .sch-title {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.3rem;
+  }
+
+  .sch-speaker {
+    font-size: 0.8rem;
+    color: var(--muted);
+    font-family: 'Space Mono', monospace;
+  }
+
+  .sch-type {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    padding: 0.3rem 0.7rem;
+    letter-spacing: 0.1em;
+    border: 1px solid;
+    white-space: nowrap;
+  }
+
+  .sch-type.keynote { border-color: var(--accent); color: var(--accent); }
+  .sch-type.talk { border-color: var(--accent2); color: var(--accent2); }
+  .sch-type.workshop { border-color: var(--accent3); color: var(--accent3); }
+  .sch-type.panel { border-color: var(--muted); color: var(--muted); }
+
+  /* VENUE */
+  .venue {
+    padding: 6rem 3rem;
+    background: var(--bg2);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .venue-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  .venue-map {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    height: 320px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .venue-map-inner {
+    text-align: center;
+    z-index: 1;
+  }
+
+  .venue-map-icon { font-size: 3rem; margin-bottom: 1rem; }
+
+  .venue-map p {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+  }
+
+  .venue-map-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(49, 103, 92, 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(81, 196, 173, 0.05) 1px, transparent 1px);
+    background-size: 30px 30px;
+  }
+
+  .venue-details h3 {
+    font-size: 1.8rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    line-height: 1.15;
+  }
+
+  .venue-details p {
+    font-size: 0.95rem;
+    color: var(--muted);
+    line-height: 1.75;
+    margin-bottom: 1.5rem;
+  }
+
+  .venue-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+
+  .venue-info-item {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.78rem;
+  }
+
+  .vi-label { color: var(--accent); letter-spacing: 0.08em; min-width: 80px; }
+  .vi-value { color: var(--text); }
+
+  /* SPONSORS */
+  .sponsors {
+    padding: 6rem 3rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .sponsor-tiers {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+  }
+
+  .sponsor-tier h4 {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .sponsor-tier h4::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  .sponsor-logos {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: center;
+  }
+
+  .sponsor-logo {
+    background: var(--card);
+    border: 1px solid var(--border);
+    padding: 1rem 2rem;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.8rem;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+    transition: border-color 0.2s, color 0.2s;
+  }
+
+  .sponsor-logo:hover { border-color: var(--accent); color: var(--accent); }
+  .sponsor-logo.gold { font-size: 1rem; padding: 1.2rem 2.5rem; }
+
+  /* REGISTER */
+  .register {
+    padding: 8rem 3rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .register::before {
+    content: '';
+    position: absolute;
+    width: 600px; height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(0,245,196,0.06) 0%, transparent 70%);
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+  }
+
+  .register-inner {
+    position: relative;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .register h2 {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    margin-bottom: 1.2rem;
+  }
+
+  .register h2 span { color: var(--accent); }
+
+  .register p {
+    font-size: 1rem;
+    color: var(--muted);
+    line-height: 1.7;
+    margin-bottom: 2.5rem;
+  }
+
+  .ticket-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+    text-align: left;
+  }
+
+  .ticket-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    padding: 1.5rem;
+    transition: border-color 0.3s;
+  }
+
+  .ticket-card:hover { border-color: var(--accent); }
+
+  .ticket-card.featured {
+    border-color: var(--accent);
+    background: rgba(0,245,196,0.05);
+  }
+
+  .ticket-name {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 0.8rem;
+  }
+
+  .ticket-name span {
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    padding: 0.15rem 0.4rem;
+    font-size: 0.6rem;
+    margin-left: 0.4rem;
+  }
+
+  .ticket-price {
+    font-size: 1.8rem;
+    font-weight: 800;
+    margin-bottom: 0.3rem;
+  }
+
+  .ticket-price sub {
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: var(--muted);
+    vertical-align: middle;
+  }
+
+  .ticket-desc {
+    font-size: 0.78rem;
+    color: var(--muted);
+    margin-bottom: 1rem;
+    line-height: 1.5;
+  }
+
+  .ticket-features {
+    list-style: none;
+    font-size: 0.78rem;
+    color: var(--muted);
+    line-height: 1.9;
+  }
+
+  .ticket-features li::before {
+    content: '→ ';
+    color: var(--accent);
+  }
+
+  /* FORM */
+  .register-form {
+    display: flex;
+    gap: 0;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
+  .register-form input {
+    flex: 1;
+    padding: 0.9rem 1.2rem;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-right: none;
+    color: var(--text);
+    font-family: 'Space Mono', monospace;
+    font-size: 0.8rem;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .register-form input::placeholder { color: var(--muted); }
+  .register-form input:focus { border-color: var(--accent); }
+
+  .register-form button {
+    padding: 0.9rem 1.5rem;
+    background: var(--accent);
+    color: #050810;
+    border: 1px solid var(--accent);
+    font-family: 'Space Mono', monospace;
+    font-size: 0.78rem;
+    font-weight: 700;
+    cursor: pointer;
+    letter-spacing: 0.05em;
+    transition: opacity 0.2s;
+  }
+
+  .register-form button:hover { opacity: 0.85; }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 3rem;
+    background: var(--bg2);
+    position: relative;
+    z-index: 1;
+  }
+
+  .footer-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 3rem;
+  }
+
+  .footer-brand p {
+    font-size: 0.85rem;
+    color: var(--muted);
+    line-height: 1.65;
+    margin-top: 0.8rem;
+    max-width: 240px;
+  }
+
+  .footer-col h5 {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1rem;
+  }
+
+  .footer-col ul { list-style: none; }
+
+  .footer-col ul li {
+    margin-bottom: 0.6rem;
+  }
+
+  .footer-col ul li a {
+    font-size: 0.85rem;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .footer-col ul li a:hover { color: var(--text); }
+
+  .footer-bottom {
+    max-width: 1200px;
+    margin: 2rem auto 0;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--muted);
+  }
+
+  .footer-bottom a { color: var(--accent); text-decoration: none; }
+
+  /* UTILS */
+  .container { max-width: 1200px; margin: 0 auto; }
+
+  /* RESPONSIVE BASIC */
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    .about { grid-template-columns: 1fr; gap: 2rem; padding: 4rem 1.5rem; }
+    .tracks-grid { grid-template-columns: 1fr; padding: 0; }
+    .tracks { padding: 4rem 1.5rem; }
+    .speakers-grid { grid-template-columns: repeat(2, 1fr); }
+    .speakers { padding: 4rem 1.5rem; }
+    .stats-bar { grid-template-columns: repeat(2, 1fr); }
+    .schedule-item { grid-template-columns: 1fr; gap: 0.5rem; }
+    .schedule { padding: 4rem 1.5rem; }
+    .venue-inner { grid-template-columns: 1fr; padding: 0; }
+    .venue { padding: 4rem 1.5rem; }
+    .ticket-cards { grid-template-columns: 1fr; }
+    .register { padding: 4rem 1.5rem; }
+    .footer-inner { grid-template-columns: 1fr 1fr; gap: 2rem; }
+    footer { padding: 2rem 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Learn With Raut<span>/</span>Innovation Withiout Limit<span>.</span>26</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#tracks">Tracks</a></li>
+    <li><a href="#speakers">Speakers</a></li>
+    <li><a href="#schedule">Schedule</a></li>
+    <li><a href="#venue">Venue</a></li>
+    <li><a href="#sponsors">Sponsors</a></li>
+  </ul>
+  <a href="#register" class="nav-cta">Register Now</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-glow2"></div>
+
+  <div class="badge">
+    <span class="badge-dot"></span>
+    REGISTRATION OPEN · 2026
+  </div>
+
+  <h1>
+    Innovation Withiout Limit
+    <span class="line2">Tech X Media Conference</span>
+    <span class="line3">Olabisi Onabanjo University · Ago-Iwoye</span>
+  </h1>
+
+  <p class="hero-sub">
+    West Africa's boldest tech x media conference — where young minds TAKE OFF!!!.
+  </p>
+
+  <div class="hero-meta">
+    <div><strong>May 1st </strong>, 2026</div>
+    <span class="hero-meta-sep">|</span>
+    <div>The City Of Greatness, RCF Main Auditorium, <strong>Ago-Iwoye</strong></div>
+    <span class="hero-meta-sep">|</span>
+      </div>
+
+  <div class="hero-btns">
+    <a href="#register" class="btn-primary">Get Your Ticket</a>
+  </div>
+
+  <div class="hero-scroll">
+    SCROLL
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stat-item">
+    <div class="stat-num">1,000+</div>
+    <div class="stat-label">Attendees Expected</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">20+</div>
+    <div class="stat-label">Expert Speakers</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">2</div>
+    <div class="stat-label">Track Fields</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">₦1M+</div>
+    <div class="stat-label">in Prizes & Grants</div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about">
+    <div class="about-text">
+      <div class="section-header">
+        <div class="section-tag">// About the Conference</div>
+        <h2 class="section-title">Where Ogun State meets the future of technology</h2>
+      </div>
+      <p>
+         <strong>Innovation Without Limit 2026</strong> 
+      </p>
+      <p>
+    </div>
+    <div class="about-visual">
+      <div class="about-card">
+        <h4>// Our Mission</h4>
+        <p>Empowering Nigerian students to build, innovate, and lead in the global technology ecosystem — starting right here in Ogun State.</p>
+      </div>
+      <div class="about-card">
+        <h4>// Hackathon 2026</h4>
+        <p>48-hour hackathon with ₦2M prize pool. Theme: "Tech for Community." Open to all registered students. Teams of 2–5.</p>
+      </div>
+      <div class="about-card">
+        <h4>// Career Fair</h4>
+        <p>30+ top tech companies recruiting on-site. Bring your CV. Interview slots available. Internships and full-time roles.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRACKS -->
+<section id="tracks">
+  <div class="tracks">
+    <div class="section-header">
+      <div class="section-tag">// Conference Tracks</div>
+      <h2 class="section-title">12 tracks. One future.</h2>
+    </div>
+    <div class="tracks-grid">
+      <div class="track-card">
+        <span class="track-icon">🤖</span>
+        <h3>Artificial Intelligence & ML</h3>
+        <p>LLMs, computer vision, responsible AI, and the next frontier of machine learning applications in Africa.</p>
+        <div class="track-tag">AI / ML</div>
+      </div>
+      <div class="track-card">
+        <span class="track-icon">🔐</span>
+        <h3>Cybersecurity & Privacy</h3>
+        <p>Ethical hacking, threat modeling, data protection laws, and building security-first systems.</p>
+        <div class="track-tag">SECURITY</div>
+      </div>
+      <div class="track-card">
+        <span class="track-icon">⛓️</span>
+        <h3>Web3 & Blockchain</h3>
+        <p>Decentralized finance, smart contracts, NFTs, and the promise of blockchain for African economies.</p>
+        <div class="track-tag">WEB3</div>
+      </div>
+      <div class="track-card">
+        <span class="track-icon">☁️</span>
+        <h3>Cloud & DevOps</h3>
+        <p>Infrastructure as code, CI/CD pipelines, containerization, and scaling for millions of users.</p>
+        <div class="track-tag">CLOUD</div>
+      </div>
+      <div class="track-card">
+        <span class="track-icon">📱</span>
+        <h3>Mobile & Web Development</h3>
+        <p>React Native, Flutter, modern web frameworks, and building products for Nigeria's mobile-first users.</p>
+        <div class="track-tag">DEV</div>
+      </div>
+      <div class="track-card">
+        <span class="track-icon">🚀</span>
+        <h3>Startup & Entrepreneurship</h3>
+        <p>From idea to funding: product-market fit, VC in Africa, legal frameworks, and scaling your startup.</p>
+        <div class="track-tag">STARTUP</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SPEAKERS -->
+<section id="speakers">
+  <div class="speakers">
+    <div class="speakers-inner">
+      <div class="section-header">
+        <div class="section-tag">// Featured Speakers</div>
+        <h2 class="section-title">Learn from the builders.</h2>
+      </div>
+      <div class="speakers-grid">
+        <div class="speaker-card">
+          <div class="speaker-avatar" style="background: rgba(0,245,196,0.1); color: var(--accent);">AO</div>
+          <h3>Dr. Adaeze Okafor</h3>
+          <div class="role">AI Research Lead</div>
+          <div class="org">Google DeepMind · Lagos</div>
+          <div class="speaker-topic">"Building Responsible AI for African Contexts"</div>
+        </div>
+        <div class="speaker-card">
+          <div class="speaker-avatar" style="background: rgba(123,97,255,0.1); color: var(--accent2);">KB</div>
+          <h3>Kunle Badmus</h3>
+          <div class="role">CTO & Co-founder</div>
+          <div class="org">Paystack · Acquired by Stripe</div>
+          <div class="speaker-topic">"Engineering at Scale: From 0 to 10 Million Transactions"</div>
+        </div>
+        <div class="speaker-card">
+          <div class="speaker-avatar" style="background: rgba(255,107,53,0.1); color: var(--accent3);">FE</div>
+          <h3>Fatima El-Amin</h3>
+          <div class="role">Security Engineer</div>
+          <div class="org">Cloudflare · Remote</div>
+          <div class="speaker-topic">"Hacking Ethically: Career in Cybersecurity"</div>
+        </div>
+        <div class="speaker-card">
+          <div class="speaker-avatar" style="background: rgba(0,245,196,0.08); color: var(--accent);">TO</div>
+          <h3>Taiwo Odubiyi</h3>
+          <div class="role">Venture Partner</div>
+          <div class="org">Techstars Africa · Nairobi</div>
+          <div class="speaker-topic">"Funding Your First Startup in Nigeria"</div>
+        </div>
+        <div class="speaker-card">
+          <div class="speaker-avatar" style="background: rgba(123,97,255,0.08); color: var(--accent2);">NI</div>
+          <h3>Ngozi Ikenna</h3>
+          <div class="role">Senior SWE</div>
+          <div class="org">Meta · London</div>
+          <div class="speaker-topic">"Breaking into Big Tech from a Nigerian University"</div>
+        </div>
+        <div class="speaker-card">
+          <div class="speaker-avatar" style="background: rgba(255,107,53,0.08); color: var(--accent3);">BA</div>
+          <h3>Babajide Afolabi</h3>
+          <div class="role">Blockchain Architect</div>
+          <div class="org">Binance Smart Chain</div>
+          <div class="speaker-topic">"DeFi Infrastructure for Emerging Markets"</div>
+        </div>
+        <div class="speaker-card">
+          <div class="speaker-avatar" style="background: rgba(0,245,196,0.06); color: var(--accent);">CE</div>
+          <h3>Chisom Ezike</h3>
+          <div class="role">Product Manager</div>
+          <div class="org">Flutterwave · Lagos</div>
+          <div class="speaker-topic">"From Engineering to Product: The Transition"</div>
+        </div>
+        <div class="speaker-card">
+          <div class="speaker-avatar" style="background: rgba(123,97,255,0.06); color: var(--accent2);">OM</div>
+          <h3>OOU Prof. O. Makinde</h3>
+          <div class="role">Dean, COLENSMA</div>
+          <div class="org">OOU · Ago-Iwoye</div>
+          <div class="speaker-topic">"Technology Policy & Africa's Digital Sovereignty"</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SCHEDULE -->
+<section id="schedule">
+  <div class="schedule">
+    <div class="section-header">
+      <div class="section-tag">// Programme Schedule</div>
+      <h2 class="section-title">A day of impact.</h2>
+    </div>
+
+    <div class="schedule-tabs">
+      <button class="tab-btn active" onclick="showDay('day1', this)">Day 1 · Jul 14</button>
+    </div>
+
+    <div id="day1" class="schedule-list active">
+      <div class="schedule-item">
+    
+        <div><div class="sch-title">Registration & Welcome Refreshments</div><div class="sch-speaker">Main Foyer, OOU Auditorium</div></div>
+        <div class="sch-type panel">OPEN</div>
+      </div>
+      <div class="schedule-item">
+        <div><div class="sch-title">Opening Ceremony & Vice-Chancellor's Address</div><div class="sch-speaker">VC OOU + Organising Committee</div></div>
+        <div class="sch-type keynote">KEYNOTE</div>
+      </div>
+      <div class="schedule-item">
+        <div><div class="sch-title">Building Responsible AI for African Contexts</div><div class="sch-speaker">Dr. Adaeze Okafor · Google DeepMind</div></div>
+        <div class="sch-type keynote">KEYNOTE</div>
+      </div>
+      <div class="schedule-item">
+          <div><div class="sch-title">Lunch Break & Networking</div><div class="sch-speaker">Exhibition Hall</div></div>
+        <div class="sch-type panel">BREAK</div>
+      </div>
+      <div class="schedule-item">
+        <div class="sch-time">13:00 – 14:30</div>
+        <div><div class="sch-title">Intro to Machine Learning with Python</div><div class="sch-speaker">Workshop Track A — Limit: 80 seats</div></div>
+        <div class="sch-type workshop">WORKSHOP</div>
+      </div>
+      <div class="schedule-item">
+        <div class="sch-time">14:45 – 16:00</div>
+        <div><div class="sch-title">Engineering at Scale: 0 to 10M Transactions</div><div class="sch-speaker">Kunle Badmus · Paystack/Stripe</div></div>
+        <div class="sch-type talk">TALK</div>
+      </div>
+      <div class="schedule-item">
+        <div class="sch-time">16:30 – 18:00</div>
+        <div><div class="sch-title">Hackathon Kickoff & Team Formation</div><div class="sch-speaker">All registered hackathon participants</div></div>
+        <div class="sch-type panel">HACKATHON</div>
+      </div>
+    </div>
+
+    <div id="day2" class="schedule-list">
+      <div class="schedule-item">
+        <div class="sch-time">09:00 – 10:15</div>
+        <div><div class="sch-title">Hacking Ethically: Career in Cybersecurity</div><div class="sch-speaker">Fatima El-Amin · Cloudflare</div></div>
+        <div class="sch-type keynote">KEYNOTE</div>
+      </div>
+      <div class="schedule-item">
+        <div class="sch-time">10:30 – 12:00</div>
+        <div><div class="sch-title">DeFi & Smart Contract Development</div><div class="sch-speaker">Workshop Track B · Babajide Afolabi</div></div>
+        <div class="sch-type workshop">WORKSHOP</div>
+      </div>
+      <div class="schedule-item">
+        <div class="sch-time">12:00 – 13:00</div>
+        <div><div class="sch-title">Lunch & Career Fair Opens</div><div class="sch-speaker">30+ Companies Recruiting</div></div>
+        <div class="sch-type panel">BREAK</div>
+      </div>
+      <div class="schedule-item">
+        <div class="sch-time">13:00 – 14:30</div>
+        <div><div class="sch-title">Funding Your First Startup in Nigeria</div><div class="sch-speaker">Taiwo Odubiyi · Techstars Africa</div></div>
+        <div class="sch-type talk">TALK</div>
+      </div>
+      <div class="schedule-item">
+        <div class="sch-time">15:00 – 16:30</div>
+        <div><div class="sch-title">Panel: Women Leading in African Tech</div><div class="sch-speaker">Dr. Okafor · Ngozi Ikenna · Chisom Ezike</div></div>
+        <div class="sch-type panel">PANEL</div>
+      </div>
+      <div class="schedule-item">
+        <div class="sch-time">17:00 – 18:30</div>
+        <div><div class="sch-title">Hackathon Continues · Mentorship Sessions</div><div class="sch-speaker">Industry Mentors Available</div></div>
+        <div class="sch-type panel">HACKATHON</div>
+      </div>
+    </div>
+
+    <div id="day3" class="schedule-list">
+      <div class="schedule-item">
+        <div class="sch-time">09:00 – 10:00</div>
+        <div><div class="sch-title">Breaking into Big Tech from a Nigerian University</div><div class="sch-speaker">Ngozi Ikenna · Meta London</div></div>
+        <div class="sch-type keynote">KEYNOTE</div>
+      </div>
+      <div class="schedule-item">
+        <div class="sch-time">10:15 – 12:00</div>
+        <div><div class="sch-title">Hackathon Final Demo Day</div><div class="sch-speaker">All Teams · Judges Panel</div></div>
+        <div class="sch-type panel">HACKATHON</div>
+      </div>
+      <div class="schedule-item">
+        <div class="sch-time">12:00 – 13:00</div>
+        <div><div class="sch-title">Lunch & Networking</div><div class="sch-speaker">Exhibition Hall</div></div>
+        <div class="sch-type panel">BREAK</div>
+      </div>
+      <div class="schedule-item">
+        <div class="sch-time">13:00 – 14:30</div>
+        <div><div class="sch-title">Technology Policy & Africa's Digital Sovereignty</div><div class="sch-speaker">Prof. O. Makinde · OOU</div></div>
+        <div class="sch-type talk">TALK</div>
+      </div>
+      <div class="schedule-item">
+        <div class="sch-time">15:00 – 16:00</div>
+        <div><div class="sch-title">Prize Giving & Awards Ceremony</div><div class="sch-speaker">Hackathon Winners · ₦2M Prize Pool</div></div>
+        <div class="sch-type keynote">AWARDS</div>
+      </div>
+      <div class="schedule-item">
+        <div class="sch-time">16:30 – 18:00</div>
+        <div><div class="sch-title">Closing Ceremony & Networking Gala</div><div class="sch-speaker">All Attendees</div></div>
+        <div class="sch-type panel">CLOSING</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VENUE -->
+<section id="venue">
+  <div class="venue">
+    <div class="venue-inner">
+      <div class="venue-map">
+        <div class="venue-map-grid"></div>
+        <div class="venue-map-inner">
+          <div class="venue-map-icon">📍</div>
+          <p>The City Of Greatness, RCF Main Auditorium</p>
+          <p style="margin-top:0.4rem; color: rgba(136, 169, 170, 0.5);">AGO-IWOYE · OGUN STATE</p>
+        </div>
+      </div>
+      <div class="venue-details">
+        <div class="section-tag">// Venue & Logistics</div>
+        <h3> The City Of Greatness, RCF Main Auditorium.</h3>
+        <p>
+
+        </p>
+        <div class="venue-info">
+          <div class="venue-info-item">
+            <span class="vi-label">DATE</span>
+            <span class="vi-value">May 1st, 2026</span>
+          </div>
+          <div class="venue-info-item">
+            <span class="vi-label">TIME</span>
+            <span class="vi-value">10:00 AM PROMPT</span>
+          </div>
+          <div class="venue-info-item">
+            <span class="vi-label">LOCATION</span>
+            <span class="vi-value">RCF AUDITORIUM, Ago-Iwoye, Ogun State</span>
+          </div>
+          <div class="venue-info-item">
+            <span class="vi-label">CAPACITY</span>
+            <span class="vi-value">1,000+ seats across all venues</span>
+          </div>
+          </div>       
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SPONSORS -->
+<section id="sponsors">
+  <div class="sponsors">
+    <div class="section-header">
+      <div class="section-tag">// Our Sponsors</div>
+      <h2 class="section-title">Backed by the best in tech.</h2>
+    </div>
+    <div class="sponsor-tiers">
+      <div class="sponsor-tier">
+        <h4>Platinum Partners</h4>
+        <div class="sponsor-logos">
+          <div class="sponsor-logo gold">FLUTTERWAVE</div>
+          <div class="sponsor-logo gold">MTN NIGERIA</div>
+          <div class="sponsor-logo gold">DANGOTE TECH</div>
+        </div>
+      </div>
+      <div class="sponsor-tier">
+        <h4>Gold Sponsors</h4>
+        <div class="sponsor-logos">
+          <div class="sponsor-logo">PAYSTACK</div>
+          <div class="sponsor-logo">KONGA</div>
+          <div class="sponsor-logo">INTERSWITCH</div>
+          <div class="sponsor-logo">ANDELA</div>
+        </div>
+      </div>
+      <div class="sponsor-tier">
+        <h4>Community & Media Partners</h4>
+        <div class="sponsor-logos">
+          <div class="sponsor-logo">TECHCABAL</div>
+          <div class="sponsor-logo">TECHPOINT.NG</div>
+          <div class="sponsor-logo">GDG LAGOS</div>
+          <div class="sponsor-logo">NLNG</div>
+          <div class="sponsor-logo">OOU SUG</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REGISTER -->
+<section id="register">
+  <div class="register">
+    <div class="register-inner">
+      <div class="section-tag" style="margin-bottom:1rem;">// Get Your Ticket</div>
+      <h2>Secure your seat at <span>Innovation Without Limit 2026</span></h2>
+      <p>On May 1st, 2026. Free Access for all.</p>
+
+
+        
+      </div>
+
+      <form class="register-form" onsubmit="handleReg(event)">
+        <input type="email" id="reg-email" placeholder="Enter your email address" required />
+        <button type="submit">REGISTER →</button>
+      </form>
+      <p id="reg-msg" style="margin-top:1rem; font-family:'Space Mono',monospace; font-size:0.75rem; color:var(--accent); display:none;">
+        ✓ You're on the list! Check your inbox for next steps.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div style="font-family:'Space Mono',monospace; font-size:0.85rem; color:var(--accent); letter-spacing:0.05em;">
+        Innovation Without Limit.26
+      </div>
+      <p>A TECH X MEDIA conference. where young minds TAKE OFF!!!.</p>
+      <p style="margin-top:0.8rem; font-family:'Space Mono',monospace; font-size:0.7rem; color:rgba(136,146,170,0.5);">
+        Organized by LEARN WITH RAUT · COLENSMA
+      </p>
+    </div>
+    <div class="footer-col">
+      <h5>Conference</h5>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#tracks">Tracks</a></li>
+        <li><a href="#speakers">Speakers</a></li>
+        <li><a href="#schedule">Schedule</a></li>
+        <li><a href="#venue">Venue</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Participate</h5>
+      <ul>
+        <li><a href="#register">Register</a></li>
+        <li><a href="#">Hackathon</a></li>
+        <li><a href="#">Speak at FutureTech</a></li>
+        <li><a href="#">Sponsor Us</a></li>
+        <li><a href="#">Volunteer</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Connect</h5>
+      <ul>
+        <li><a href="#">Twitter / X</a></li>
+        <li><a href="#">Instagram</a></li>
+        <li><a href="#">LinkedIn</a></li>
+        <li><a href="#">WhatsApp Community</a></li>
+        <li><a href="#">Contact Us</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Innovation Without Limit. All rights reserved.</span>
+    <span>Built with ❤️ by <a href="#">OOU Tech Community</a></span>
+  </div>
+</footer>
+
+<script>
+  function showDay(id, btn) {
+    document.querySelectorAll('.schedule-list').forEach(el => el.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    btn.classList.add('active');
+  }
+
+  function handleReg(e) {
+    e.preventDefault();
+    const msg = document.getElementById('reg-msg');
+    document.getElementById('reg-email').value = '';
+    msg.style.display = 'block';
+    setTimeout(() => msg.style.display = 'none', 5000);
+  }
+
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.track-card, .speaker-card, .schedule-item, .ticket-card, .about-card').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+    observer.observe(el);
+  });
+</script>
+
+</body>
+</html>
